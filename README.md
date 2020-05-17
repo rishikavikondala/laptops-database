@@ -1,7 +1,7 @@
 # Laptops Database
 
 Collaborators:
-Rishi Kavikondala
-Tanner Kooistra
-Brian Ying
-Ryan Kim
+- Rishi Kavikondala
+- Tanner Kooistra
+- Brian Ying
+- Ryan Kim
