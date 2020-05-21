@@ -1,0 +1,14 @@
+USE INFO330_Proj_4
+
+ALTER TABLE tblDETAIL
+ADD DetailTypeID INT
+
+CREATE TABLE tblDETAIL_TYPE (
+	DetailTypeID INT IDENTITY (1, 1) PRIMARY KEY,
+	DetailTypeName varchar(20),
+	DetailTypeDescription varchar(500)
+)
+GO
+
+ALTER TABLE tblDETAIL
+ADD CONSTRAINT FK_DetailType FOREIGN KEY (DetailTypeID) REFERENCES tblDETAIL_TYPE(DetailTypeID)
