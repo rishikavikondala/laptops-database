@@ -1,0 +1,44 @@
+USE INFO330_Proj_4
+
+CREATE TABLE LAPTOP_FEATURE (
+    LaptopFeatureID INT IDENTITY (1, 1) PRIMARY KEY,
+    FeatureID INT,
+    LaptopID INT,
+    CONSTRAINT FK_FeatureID FOREIGN KEY (FeatureID)
+    REFERENCES tblFEATURE(FeatureID),
+    CONSTRAINT FK_LaptopID FOREIGN KEY (LaptopID)
+    REFERENCES tblLAPTOP(LaptopID)
+)
+GO
+
+CREATE TABLE tblLAPTOP (
+    LaptopID INT IDENTITY (1, 1) PRIMARY KEY,
+    LaptopFeatureID INT,
+    LaptopName varchar(30),
+    CONSTRAINT FK_LaptopFeatureID FOREIGN KEY (LaptopFeatureID)
+    REFERENCES tblLAPTOP_FEATURE(LaptopFeatureID)
+)
+GO
+
+CREATE TABLE tblLAPTOP_DETAIL (
+    LaptopDetailID INT IDENTITY (1, 1) PRIMARY KEY,
+    LaptopID INT,
+    DetailID INT,
+    CONSTRAINT FK_LaptopID FOREIGN KEY (LaptopID)
+    REFERENCES tblLAPTOP(LaptopID),
+    CONSTRAINT FK_DetailID FOREIGN KEY (DetailID)
+    REFERENCES tblDETAIL(DetailID)
+)
+GO
+
+CREATE TABLE tblLAPTOP_ORDER (
+    LaptopOrderID INT IDENTITY (1, 1) PRIMARY KEY,
+    LaptopID INT,
+    OrderID INT,
+    Quantity INT,
+    CONSTRAINT FK_LaptopID FOREIGN KEY (LaptopID)
+    REFERENCES tblLAPTOP(LaptopID),
+    CONSTRAINT FK_ORDERID FOREIGN KEY (OrderID)
+    REFERENCES tblORDER(OrderID)
+)
+GO
