@@ -11,7 +11,7 @@ CREATE TABLE tblFEATURE (
     FeatureID INT IDENTITY (1, 1) PRIMARY KEY,
     BrandID INT,
     FeatureName varchar(20),
-    FeatureDescription varchar(500)
+    FeatureDescription varchar(500),
     CONSTRAINT FK_BrandID FOREIGN KEY (BrandID)
     REFERENCES tblBRAND(BrandID)
 )
