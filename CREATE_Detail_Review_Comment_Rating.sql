@@ -6,7 +6,7 @@ CREATE TABLE tblDETAIL (
 	DetailDescription varchar(500)
 )
 GO
-/*
+
 CREATE TABLE tblREVIEW (
   ReviewID INT IDENTITY (1, 1) PRIMARY KEY,
   RatingID INT,
@@ -19,15 +19,16 @@ CREATE TABLE tblREVIEW (
   CONSTRAINT FK_LaptopOrderID FOREIGN KEY(LaptopOrderID)
   REFERENCES tblLAPTOP_ORDER(LaptopOrderID)
 )
-GO 
-*/
+GO
+
 CREATE TABLE tblCOMMENT (
 	CommentID INT IDENTITY (1, 1) PRIMARY KEY,
 	CommentDescription varchar(500)
 )
-GO 
+GO
+
 CREATE TABLE tblRATING (
 	RatingID INT IDENTITY (1, 1) PRIMARY KEY,
 	RatingValue INT
 )
-
+GO
