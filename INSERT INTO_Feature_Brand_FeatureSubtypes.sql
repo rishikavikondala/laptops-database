@@ -1,5 +1,5 @@
 USE INFO330_Proj_4
-
+SELECT * FROM tblFEATURE
 /* List of brands:
 Apple, Google, Microsoft, Dell, Samsung, Lenovo, Acer, MSI, Alienware, Vivobook, Intel, Mediatek, AMD, NVIDIA, Imagination Technologies, Dolby, AKG */
 -- Resource: https://www.w3schools.com/sql/sql_insert.asp
@@ -20,3 +20,8 @@ INSERT INTO tblBRAND(BrandName, BrandDescription) VALUES ('NVIDIA', 'Large comme
 INSERT INTO tblBRAND(BrandName, BrandDescription) VALUES ('Dolby', 'Maker of audio components for other devices')
 INSERT INTO tblBRAND(BrandName, BrandDescription) VALUES ('AKG', 'Maker of audio parts for devices for laptops')
 INSERT INTO tblBRAND(BrandName, BrandDescription) VALUES ('Imagination', 'A maker of GPUs')
+
+/* tblFEATURE (PK)
+BrandID (FK)
+FeatureName
+FeatureDescription */
