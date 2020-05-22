@@ -25,3 +25,5 @@ INSERT INTO tblBRAND(BrandName, BrandDescription) VALUES ('Imagination', 'A make
 BrandID (FK)
 FeatureName
 FeatureDescription */
+
+DELETE FROM tblFEATURE WHERE FeatureID = 1
