@@ -6,7 +6,6 @@ INSERT INTO tblREGION(RegionName, RegionDescription) VALUES('Midwest', 'Ohio, Mi
 INSERT INTO tblREGION(RegionName, RegionDescription) VALUES('South', 'Delaware, Maryland, Virginia, West Virginia, Kentucky, North Carolina, South Carolina, Tennessee, Georgia, Florida, Alabama, Mississippi, Arkansas, Louisiana, Texas, Oklahoma')
 INSERT INTO tblREGION(RegionName, RegionDescription) VALUES('West', 'Montana, Idaho, Wyoming, Colorado, New Mexico, Arizona, Utah, Nevada, California, Oregon, Washington, Alaska, Hawaii')
 
-
 --tblCUSTOMER
 INSERT INTO tblCUSTOMER(FirstName, LastName, DateOfBirth, RegionID, Country, [State], City, Street, Zip, Phone, Email) VALUES('Can', 'Carey', '1984-5-16', 2, 'United States', 'Minnesota', 'Saint Cloud', '3899 Newton Street', '56301', '3202984548', 'cancarey1984@live.com')
 INSERT INTO tblCUSTOMER(FirstName, LastName, DateOfBirth, RegionID, Country, [State], City, Street, Zip, Phone, Email) VALUES('Lesley', 'Tillman', '1971-3-29', 2, 'United States', 'Missouri', 'St.Louis', '170 Hyde Park Road', '63199', '6135550127', 'ltillman1@yahoo.com')
@@ -50,3 +49,4 @@ INSERT INTO tblORDER(CustomerID, OrderDate, ShipDate, OrderTotal) VALUES(17, '12
 INSERT INTO tblORDER(CustomerID, OrderDate, ShipDate, OrderTotal) VALUES(18, '2/2/2020', '2/4/2020', 1799.19)
 INSERT INTO tblORDER(CustomerID, OrderDate, ShipDate, OrderTotal) VALUES(19, '7/27/2019', '7/29/2019', 653.24)
 INSERT INTO tblORDER(CustomerID, OrderDate, ShipDate, OrderTotal) VALUES(20, '4/11/2020', '4/13/2020', 915.19)
+
