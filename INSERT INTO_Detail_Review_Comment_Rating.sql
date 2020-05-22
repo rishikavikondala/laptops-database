@@ -24,26 +24,27 @@ INSERT INTO tblDETAIL(LaptopID, Price, Weight, Color, BatteryLife, ReleaseYear) 
 
 
 --tblREVIEW
-INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (1, 1, 1)
-INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (2, 2, 2)
-INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (3, 3, 3)
+INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (5, 1, 1)
+INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (3, 2, 2)
+INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (4, 3, 3)
 INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (4, 4, 4)
 INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (5, 5, 5)
-INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (6, 6, 6)
-INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (7, 7, 7)
-INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (8, 8, 8)
-INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (9, 9, 9)
-INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (10, 10, 10)
-INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (11, 11, 11)
-INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (12, 12, 12)
-INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (13, 13, 13)
-INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (14, 14, 14)
-INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (15, 15, 15)
-INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (16, 16, 16)
-INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (17, 17, 17)
-INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (18, 18, 18)
-INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (19, 19, 19)
-INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (20, 20, 20)
+INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (5, 6, 6)
+INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (5, 7, 7)
+INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (3, 8, 8)
+INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (5, 9, 9)
+INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (4, 10, 10)
+INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (4, 11, 11)
+INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (3, 12, 12)
+INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (2, 13, 13)
+INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (1, 14, 14)
+INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (5, 15, 15)
+INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (3, 16, 16)
+INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (5, 17, 17)
+INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (1, 18, 18)
+INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (5, 19, 19)
+INSERT INTO tblREVIEW(RatingID, CommentID, LaptopOrderID) VALUES (2, 20, 20)
+
 
 --tblCOMMENT
 
@@ -70,27 +71,19 @@ INSERT INTO tblCOMMENT(CommentDescription) VALUES ('Touchpad did not work as soo
 
 
 --tblRATING
-INSERT INTO tblRATING(RatingValue) VALUES (5)
-INSERT INTO tblRATING(RatingValue) VALUES (3)
-INSERT INTO tblRATING(RatingValue) VALUES (4)
-INSERT INTO tblRATING(RatingValue) VALUES (4)
-INSERT INTO tblRATING(RatingValue) VALUES (5)
-INSERT INTO tblRATING(RatingValue) VALUES (5)
-INSERT INTO tblRATING(RatingValue) VALUES (5)
-INSERT INTO tblRATING(RatingValue) VALUES (3)
-INSERT INTO tblRATING(RatingValue) VALUES (5)
-INSERT INTO tblRATING(RatingValue) VALUES (4)
-INSERT INTO tblRATING(RatingValue) VALUES (4)
-INSERT INTO tblRATING(RatingValue) VALUES (3)
-INSERT INTO tblRATING(RatingValue) VALUES (2)
 INSERT INTO tblRATING(RatingValue) VALUES (1)
-INSERT INTO tblRATING(RatingValue) VALUES (5)
-INSERT INTO tblRATING(RatingValue) VALUES (3)
-INSERT INTO tblRATING(RatingValue) VALUES (5)
-INSERT INTO tblRATING(RatingValue) VALUES (1)
-INSERT INTO tblRATING(RatingValue) VALUES (5)
 INSERT INTO tblRATING(RatingValue) VALUES (2)
+INSERT INTO tblRATING(RatingValue) VALUES (3)
+INSERT INTO tblRATING(RatingValue) VALUES (4)
+INSERT INTO tblRATING(RatingValue) VALUES (5)
 
 
 
+DELETE FROM tblCOMMENT
+DELETE FROM tblRATING
+DELETE FROM tblREVIEW
 
+DBCC CHECKIDENT (tblREVIEW, RESEED, 0)
+SELECT * FROM tblCOMMENT
+SELECT * FROM tblRATING
+SELECT * FROM tblREVIEW
