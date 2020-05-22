@@ -1,7 +1,6 @@
 USE INFO330_Proj_4
 
 --tblREGION
-
 INSERT INTO tblREGION(RegionName, RegionDescription) VALUES('Northeast', 'Maine, New Hampshire, Vermont, Massachusetts, Rhode Island, Connecticut, New York, New Jersey, Pennsylvania')
 INSERT INTO tblREGION(RegionName, RegionDescription) VALUES('Midwest', 'Ohio, Michigan, Indiana, Wisconsin, Illinois, Minnesota, Iowa, Missouri, North Dakota, South Dakota, Nebraska, Kansas')
 INSERT INTO tblREGION(RegionName, RegionDescription) VALUES('South', 'Delaware, Maryland, Virginia, West Virginia, Kentucky, North Carolina, South Carolina, Tennessee, Georgia, Florida, Alabama, Mississippi, Arkansas, Louisiana, Texas, Oklahoma')
@@ -9,7 +8,6 @@ INSERT INTO tblREGION(RegionName, RegionDescription) VALUES('West', 'Montana, Id
 
 
 --tblCUSTOMER
-
 INSERT INTO tblCUSTOMER(FirstName, LastName, DateOfBirth, RegionID, Country, [State], City, Street, Zip, Phone, Email) VALUES('Can', 'Carey', '1984-5-16', 2, 'United States', 'Minnesota', 'Saint Cloud', '3899 Newton Street', '56301', '3202984548', 'cancarey1984@live.com')
 INSERT INTO tblCUSTOMER(FirstName, LastName, DateOfBirth, RegionID, Country, [State], City, Street, Zip, Phone, Email) VALUES('Lesley', 'Tillman', '1971-3-29', 2, 'United States', 'Missouri', 'St.Louis', '170 Hyde Park Road', '63199', '6135550127', 'ltillman1@yahoo.com')
 INSERT INTO tblCUSTOMER(FirstName, LastName, DateOfBirth, RegionID, Country, [State], City, Street, Zip, Phone, Email) VALUES('Poppy', 'Oneil', '1998-8-5', 4, 'United States', 'California', 'Fremont', '4575 Driftwood Road', '94539', '5102181897', 'poppy.oneil@outlook.com')
@@ -32,7 +30,6 @@ INSERT INTO tblCUSTOMER(FirstName, LastName, DateOfBirth, RegionID, Country, [St
 INSERT INTO tblCUSTOMER(FirstName, LastName, DateOfBirth, RegionID, Country, [State], City, Street, Zip, Phone, Email) VALUES('Derek', 'Pill', '1998-6-18', 3, 'United States', 'Georgia', 'Winder', '8537 Dogwood Drive', '30680', '4702099799', 'dereklovespills@gmail.com')
 
 --tblORDER
-
 INSERT INTO tblORDER(CustomerID, OrderDate, ShipDate, OrderTotal) VALUES(1, '12/13/2019', '12/15/2019', 1067.93)
 INSERT INTO tblORDER(CustomerID, OrderDate, ShipDate, OrderTotal) VALUES(2, '11/28/2019', '11/30/2019', 676.26)
 INSERT INTO tblORDER(CustomerID, OrderDate, ShipDate, OrderTotal) VALUES(3, '4/19/2019', '4/21/2019', 804.74)
@@ -53,4 +50,3 @@ INSERT INTO tblORDER(CustomerID, OrderDate, ShipDate, OrderTotal) VALUES(17, '12
 INSERT INTO tblORDER(CustomerID, OrderDate, ShipDate, OrderTotal) VALUES(18, '2/2/2020', '2/4/2020', 1799.19)
 INSERT INTO tblORDER(CustomerID, OrderDate, ShipDate, OrderTotal) VALUES(19, '7/27/2019', '7/29/2019', 653.24)
 INSERT INTO tblORDER(CustomerID, OrderDate, ShipDate, OrderTotal) VALUES(20, '4/11/2020', '4/13/2020', 915.19)
-
