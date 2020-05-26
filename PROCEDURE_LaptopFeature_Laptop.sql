@@ -7,9 +7,15 @@ CREATE PROCEDURE uspINSERTLAPTOP
     @LaptopName varchar(50),
     @ReleaseYear char(4)
 AS
+DECLARE @Y_ID INT
+SELECT @Y_ID = (
+    SELECT ReleaseYearID
+    FROM tblRELEASE_YEAR
+    WHERE ReleaseYear = @ReleaseYear
+)
 BEGIN TRANSACTION T1
-INSERT INTO tblLAPTOP(LaptopName, ReleaseYear)
-VALUES(@LaptopName, @ReleaseYear)
+INSERT INTO tblLAPTOP(LaptopName, ReleaseYearID)
+VALUES(@LaptopName, @Y_ID)
 COMMIT TRANSACTION T1
 
 -- INSERT INTO tblLAPTOP_FEATURE
@@ -32,4 +38,4 @@ SET @LaptopID = (
 BEGIN TRANSACTION T1
 INSERT INTO tblLAPTOP_FEATURE(FeatureID, LaptopID)
 VALUES(@FeatureID, @LaptopID)
-BEGIN TRANSACTION T1
+COMMIT TRANSACTION T1
