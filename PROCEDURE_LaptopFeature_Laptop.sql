@@ -1,33 +1,35 @@
 USE INFO330_Proj_4
+SELECT * FROM tblLAPTOP
 
-CREATE PROCEDURE uspNewLaptop
+-- INSERT INTO tblLAPTOP
+GO
+CREATE PROCEDURE uspINSERTLAPTOP
     @LaptopName varchar(50),
-    @LaptopDescription varchar(300)
+    @ReleaseYear char(4)
 AS
-
 BEGIN TRANSACTION T1
-INSERT INTO tblLAPTOP(LaptopName, LaptopDescription)
-VALUES(@LaptopName, @LaptopDescription)
+INSERT INTO tblLAPTOP(LaptopName, ReleaseYear)
+VALUES(@LaptopName, @ReleaseYear)
 COMMIT TRANSACTION T1
 
-
-CREATE PROCEDURE uspNewLaptopFeature
-    @FeatureName
-    @LaptopName
+-- INSERT INTO tblLAPTOP_FEATURE
+GO
+CREATE PROCEDURE uspINSERTLAPTOPFEATURE
+    @FeatureName varchar(200),
+    @LaptopName varchar(50)
 AS
 DECLARE @FeatureID INT, @LaptopID INT
 SET @FeatureID = (
     SELECT FeatureID
     FROM tblFEATURE
     WHERE FeatureName = @FeatureName
-    )
+)
 SET @LaptopID = (
     SELECT LaptopID
     FROM tblLAPTOP
     WHERE LaptopName = @LaptopName
 )
-
-BEGIN TRANSACTION T2
+BEGIN TRANSACTION T1
 INSERT INTO tblLAPTOP_FEATURE(FeatureID, LaptopID)
 VALUES(@FeatureID, @LaptopID)
-BEGIN TRANSACTION T2
+BEGIN TRANSACTION T1

@@ -1,4 +1,5 @@
 USE INFO330_Proj_4
+ALTER TABLE tblLAPTOP
 
 CREATE TABLE tblLAPTOP_FEATURE (
     LaptopFeatureID INT IDENTITY (1, 1) PRIMARY KEY,
@@ -10,7 +11,7 @@ GO
 CREATE TABLE tblLAPTOP (
     LaptopID INT IDENTITY (1, 1) PRIMARY KEY,
     LaptopName varchar(30),
-    LaptopDescription varchar(500)
+    ReleaseYear char(4)
 )
 GO
 
