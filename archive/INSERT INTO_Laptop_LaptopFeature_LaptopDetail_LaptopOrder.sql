@@ -24,7 +24,6 @@
 -- INSERT INTO tblLAPTOP(LaptopName, LaptopDescription) VALUES ('VivoBook 15', 'Whether at work or play, ASUS VivoBook 15 is the compact laptop that immerses you in whatever you set out to do. Its new frameless four-sided NanoEdge display boasts an ultraslim 5.7mm bezel, giving an amazing 88% screen-to-body ratio for supremely immersive visuals.')
 -- INSERT INTO tblLAPTOP(LaptopName, LaptopDescription) VALUES ('Acer Nitro 5 Gaming Laptop', 'Thrust yourself into the gaming world with a form factor that takes you beyond that of mere mortal laptops. A 1TB HDD provides excellent space to accommodate your complete data.')
 
-
 -- INSERT INTO tblLAPTOP_ORDER(Quantity) VALUES (1)
 -- INSERT INTO tblLAPTOP_ORDER(Quantity) VALUES (2)
 -- INSERT INTO tblLAPTOP_ORDER(Quantity) VALUES (1)
