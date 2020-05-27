@@ -23,6 +23,69 @@ INSERT INTO tblDETAIL (DetailName, DetailDescription, LaptopID, Price, [Weight],
 VALUES (@DetailName, @DetaiLDesc, @L_ID, @Price, @Weight, @Color, @BatteryLife, @ReleaseYear)
 COMMIT TRAN T1
 
+EXEC uspINSERTDETAIL @DetailName = 999.00, @DetailTypeName = 'Price'
+EXEC uspINSERTDETAIL @DetailName = 2.8, @DetailTypeName = 'Weight'
+EXEC uspINSERTDETAIL @DetailName = 12.0, @DetailTypeName = 'Battery Life'
+EXEC uspINSERTDETAIL @DetailName = 649.00, @DetailTypeName = 'Price'
+EXEC uspINSERTDETAIL @DetailName = 2.0, @DetailTypeName = 'Weight'
+EXEC uspINSERTDETAIL @DetailName = 12.0, @DetailTypeName = 'BatteryLife'
+EXEC uspINSERTDETAIL @DetailName = 749.99, @DetailTypeName = 'Price'
+EXEC uspINSERTDETAIL @DetailName = 1.41, @DetailTypeName = 'Weight'
+EXEC uspINSERTDETAIL @DetailName = 10.5, @DetailTypeName = 'BatteryLife'
+EXEC uspINSERTDETAIL @DetailName = 1799.99, @DetailTypeName = 'Price'
+EXEC uspINSERTDETAIL @DetailName = 4.0, @DetailTypeName = 'Weight'
+EXEC uspINSERTDETAIL @DetailName = 20.5, @DetailTypeName = 'BatteryLife'
+EXEC uspINSERTDETAIL @DetailName = 2399.99, @DetailTypeName = 'Price'
+EXEC uspINSERTDETAIL @DetailName = 4.3, @DetailTypeName = 'Weight'
+EXEC uspINSERTDETAIL @DetailName = 11.0, @DetailTypeName = 'BatteryLife'
+EXEC uspINSERTDETAIL @DetailName = 1599.99, @DetailTypeName = 'Price'
+EXEC uspINSERTDETAIL @DetailName = 2.89, @DetailTypeName = 'Weight'
+EXEC uspINSERTDETAIL @DetailName = 11.5, @DetailTypeName = 'BatteryLife'
+EXEC uspINSERTDETAIL @DetailName = 1794.99, @DetailTypeName = 'Price'
+EXEC uspINSERTDETAIL @DetailName = 5.79, @DetailTypeName = 'Weight'
+EXEC uspINSERTDETAIL @DetailName = 2.5, @DetailTypeName = 'BatteryLife'
+EXEC uspINSERTDETAIL @DetailName = 949.99, @DetailTypeName = 'Price'
+EXEC uspINSERTDETAIL @DetailName = 3.5, @DetailTypeName = 'Weight'
+EXEC uspINSERTDETAIL @DetailName = 19, @DetailTypeName = 'BatteryLife'
+EXEC uspINSERTDETAIL @DetailName = 1353.87, @DetailTypeName = 'Price'
+EXEC uspINSERTDETAIL @DetailName = 2.4, @DetailTypeName = 'Weight'
+EXEC uspINSERTDETAIL @DetailName = 18.3, @DetailTypeName = 'BatteryLife'
+EXEC uspINSERTDETAIL @DetailName = 1829.00, @DetailTypeName = 'Price'
+EXEC uspINSERTDETAIL @DetailName = 3.39, @DetailTypeName = 'Weight'
+EXEC uspINSERTDETAIL @DetailName = 6.2, @DetailTypeName = 'BatteryLife'
+EXEC uspINSERTDETAIL @DetailName = 659.99, @DetailTypeName = 'Price'
+EXEC uspINSERTDETAIL @DetailName = 3.97, @DetailTypeName = 'Weight'
+EXEC uspINSERTDETAIL @DetailName = 11.0, @DetailTypeName = 'BatteryLife'
+EXEC uspINSERTDETAIL @DetailName = 249.00, @DetailTypeName = 'Price'
+EXEC uspINSERTDETAIL @DetailName = 3.3, @DetailTypeName = 'Weight'
+EXEC uspINSERTDETAIL @DetailName = 10.0, @DetailTypeName = 'BatteryLife'
+EXEC uspINSERTDETAIL @DetailName = 4599.99, @DetailTypeName = 'Price'
+EXEC uspINSERTDETAIL @DetailName = 9.92, @DetailTypeName = 'Weight'
+EXEC uspINSERTDETAIL @DetailName = 6.0, @DetailTypeName = 'BatteryLife'
+EXEC uspINSERTDETAIL @DetailName = 2544.99, @DetailTypeName = 'Price'
+EXEC uspINSERTDETAIL @DetailName = 8.54, @DetailTypeName = 'Weight'
+EXEC uspINSERTDETAIL @DetailName = 2.0, @DetailTypeName = 'BatteryLife'
+EXEC uspINSERTDETAIL @DetailName = 3229.00, @DetailTypeName = 'Price'
+EXEC uspINSERTDETAIL @DetailName = 4.02, @DetailTypeName = 'Weight'
+EXEC uspINSERTDETAIL @DetailName = 10.0, @DetailTypeName = 'BatteryLife'
+EXEC uspINSERTDETAIL @DetailName = 999.99, @DetailTypeName = 'Price'
+EXEC uspINSERTDETAIL @DetailName = 2.6, @DetailTypeName = 'Weight'
+EXEC uspINSERTDETAIL @DetailName = 14.0, @DetailTypeName = 'BatteryLife'
+EXEC uspINSERTDETAIL @DetailName = 949.99, @DetailTypeName = 'Price'
+EXEC uspINSERTDETAIL @DetailName = 5.9, @DetailTypeName = 'Weight'
+EXEC uspINSERTDETAIL @DetailName = 6.33, @DetailTypeName = 'BatteryLife'
+EXEC uspINSERTDETAIL @DetailName = 1729.99, @DetailTypeName = 'Price'
+EXEC uspINSERTDETAIL @DetailName = 6.9, @DetailTypeName = 'Weight'
+EXEC uspINSERTDETAIL @DetailName = 6.33, @DetailTypeName = 'BatteryLife'
+EXEC uspINSERTDETAIL @DetailName = 599.99, @DetailTypeName = 'Price'
+EXEC uspINSERTDETAIL @DetailName = 3.75, @DetailTypeName = 'Weight'
+EXEC uspINSERTDETAIL @DetailName = 9.0, @DetailTypeName = 'BatteryLife'
+EXEC uspINSERTDETAIL @DetailName = 879.99, @DetailTypeName = 'Price'
+EXEC uspINSERTDETAIL @DetailName = 5.73, @DetailTypeName = 'Weight'
+EXEC uspINSERTDETAIL @DetailName = 7.0, @DetailTypeName = 'BatteryLife'
+
+
+
 -- stored procedure for tblREVIEW
 GO
 CREATE PROCEDURE uspINSERTREVIEW
@@ -75,3 +138,4 @@ BEGIN TRAN T1
 INSERT INTO tblREVIEW (RatingID, CommentID, LaptopOrderID)
 VALUES (@R_ID, @C_ID, @LO_ID)
 COMMIT TRAN T1
+
