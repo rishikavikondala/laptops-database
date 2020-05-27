@@ -1,7 +1,7 @@
 USE INFO330_Proj_4
 
 /* A customer must have ordered a laptop in order to place a review for it. */
-
+GO
 CREATE FUNCTION fn_CustomerMustOrderToReview()
 RETURNS INT
 AS
@@ -25,11 +25,11 @@ END
 
 GO
 ALTER TABLE tblREVIEW
-ADD CONSTRAINT ck.CustomerOrderReview
+ADD CONSTRAINT CK_CustomerOrderReview
 CHECK(dbo.fn_CustomerMustOrderToReview() = 0)
 
 /* No customer with an invalid address or with an address outside of the united states can place an order  */
-
+GO
 CREATE FUNCTION fn_InvalidAddressOutsideUS()
 RETURNS INT
 AS
@@ -54,5 +54,5 @@ END
 
 GO
 ALTER TABLE tblORDER
-ADD CONSTRAINT ck.NoInvalidAddressOrOutsideUS
+ADD CONSTRAINT CK_NoInvalidAddressOrOutsideUS
 CHECK (dbo.fn_InvalidAddressOutsideUS() = 0)
