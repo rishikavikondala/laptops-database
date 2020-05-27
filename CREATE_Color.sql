@@ -1,0 +1,6 @@
+USE INFO330_Proj_4
+
+CREATE TABLE tblCOLOR (
+    ColorID INT IDENTITY (1, 1) PRIMARY KEY,
+	ColorName varchar(20)
+)

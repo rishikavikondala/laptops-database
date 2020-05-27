@@ -1,16 +1,16 @@
 USE INFO330_Proj_4
+ALTER TABLE tblDETAIL
+
+DROP COLUMN DetailDescription
+
+SELECT * FROM tblLAPTOP
+
 
 -- stored procedure for tblDETAIL
 GO
 CREATE PROCEDURE uspINSERTDETAIL
-@Price INT,
-@Weight INT, 
-@Color varchar(20),
-@BatteryLife FLOAT,
-@ReleaseYear INT,
-@LaptopName varchar(30),
-@DetailName varchar(20),
-@DetailDesc varchar(500)
+@DetailName numeric(6, 2),
+@DetailTypeName varchar(20)
 AS 
 DECLARE @L_ID INT
 SET @L_ID = (
