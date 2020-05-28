@@ -8,11 +8,13 @@ RETURNS INT
 AS
 BEGIN
 	DECLARE @RET INT = 0
-	IF EXISTS(SELECT S.FeatureID
-	FROM tblSTORAGE S
-	JOIN tblLAPTOP_FEATURE LF ON S.FeatureID = LF.FeatureID
-	JOIN tblLAPTOP L ON LF.LaptopID = L.LaptopID
-	WHERE S.NumGigs < 64)
+	IF EXISTS (
+		SELECT S.FeatureID
+		FROM tblSTORAGE S
+			JOIN tblLAPTOP_FEATURE LF ON S.FeatureID = LF.FeatureID
+			JOIN tblLAPTOP L ON LF.LaptopID = L.LaptopID
+		WHERE S.NumGigs < 64
+	)
 	BEGIN
 	SET @RET = 1
 	END
@@ -32,9 +34,11 @@ RETURNS INT
 AS
 BEGIN
 	DECLARE @RET INT = 0
-	IF EXISTS(SELECT LaptopOrderID
-	FROM tblLAPTOP_ORDER
-	WHERE Quantity < 1 OR Quantity > 20)
+	IF EXISTS (
+		SELECT LaptopOrderID
+		FROM tblLAPTOP_ORDER
+		WHERE Quantity < 1 OR Quantity > 20
+	)
 	BEGIN
 	SET @RET = 1
 	END

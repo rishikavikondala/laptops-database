@@ -39,3 +39,6 @@ CREATE TABLE tblRATING (
 	RatingValue INT
 )
 
+USE INFO330_Proj_4
+ALTER TABLE tblDETAIL
+ALTER COLUMN DetailName numeric(6, 2)
