@@ -172,3 +172,5 @@ EXEC uspINSERTFEATURE @FeatureName = 'PCIe M.2 SSD + SSHD Hybrid Drive', @BrandN
 EXEC uspINSERTFEATURE @FeatureName = 'PCIe solid-state-drive', @BrandName = 'Asus'
 EXEC uspINSERTFEATURE @FeatureName = 'PCIe NVMe SSD + SATA HDD', @BrandName = 'Dell'
 EXEC uspINSERTFEATURE @FeatureName = 'PCIe Solid-State-Drive (SSD)', @BrandName = 'Acer'
+
+EXEC uspINSERTFEATURE @FeatureName = 'Vivobook Stereo Speaker', @BrandName = 'Asus'

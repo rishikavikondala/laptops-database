@@ -1,6 +1,11 @@
 USE INFO330_Proj_4
 
--- No laptop with the feature ‘Windows’ (for an operating system) can have a weight of less than 1 pound.
+/*
+No laptop released in or after 2015 with:
+- the feature ‘Windows’ (for an operating system)
+- Windows versions '10 Home' or '10 Pro'
+can have a weight of less than 1 pound.
+*/
 
 GO
 CREATE FUNCTION fn_WindowsWeight() 
@@ -11,14 +16,17 @@ BEGIN
 	IF EXISTS (
 		SELECT L.LaptopID
         FROM tblLAPTOP L
+            JOIN tblRELEASE_YEAR RY ON L.ReleaseYearID = RY.ReleaseYearID
             JOIN tblLAPTOP_FEATURE LF ON L.LaptopID = LF.LaptopID
             JOIN tblFEATURE F ON LF.FeatureID = F.FeatureID
-            JOIN tblLAPTOP_DETAIL LD ON L.LaptopID = LD.LaptopID
-            JOIN tblDETAIL D ON LD.DetailID = D.DetailID
-            JOIN tblDETAIL_TYPE DT ON D.DetailTypeID = DT.DetailTypeID
-		WHERE F.FeatureName = 'Windows'
-        AND DT.DetailTypeName = 'Weight'
-        AND D.DetailName < '1.0' -- convert DetailName to numeric or decimal
+            JOIN tblOS O ON F.FeatureID = O.FeatureID
+            JOIN tblVERSION V ON O.VersionID = V.VersionID
+            JOIN tblWEIGHT W ON L.WeightID = W.WeightID
+        WHERE RY.ReleaseYear >= 2015
+		AND F.FeatureName = 'Windows'
+        AND V.VersionName = '10 Home'
+        OR V.VersionName = '10 Pro'
+        AND W.Weight < 1.0
 	)
 	SET @RET = 1
 RETURN @RET

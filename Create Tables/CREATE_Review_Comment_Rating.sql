@@ -1,20 +1,5 @@
 USE INFO330_Proj_4
 
-CREATE TABLE tblDETAIL (
-	DetailID INT IDENTITY (1, 1) PRIMARY KEY,
-	DetailName varchar(20),
-	DetailDescription varchar(500),
-	LaptopID INT,
-	Price INT,
-	Weight INT,
-	Color varchar(20),
-	BatteryLife FLOAT,
-	ReleaseYear INT
-	CONSTRAINT FK_LaptopID FOREIGN KEY (LaptopID)
-    REFERENCES tblLaptop(LaptopID)
-)
-GO
-
 CREATE TABLE tblREVIEW (
   ReviewID INT IDENTITY (1, 1) PRIMARY KEY,
   RatingID INT,
@@ -38,7 +23,3 @@ CREATE TABLE tblRATING (
 	RatingID INT IDENTITY (1, 1) PRIMARY KEY,
 	RatingValue INT
 )
-
-USE INFO330_Proj_4
-ALTER TABLE tblDETAIL
-ALTER COLUMN DetailName numeric(6, 2)
