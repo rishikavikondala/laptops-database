@@ -58,9 +58,6 @@ INSERT INTO tblFEATURE
 VALUES (@B_ID, @FeatureName)
 COMMIT TRAN T1
 
-USE INFO330_Proj_4
-SELECT * FROM tblFEATURE WHERE FeatureID = 132 OR FeatureID = 144
-
 -- OS
 EXEC uspINSERTFEATURE @FeatureName = 'MacOS', @BrandName = 'Apple'
 EXEC uspINSERTFEATURE @FeatureName = 'Windows', @BrandName = 'Microsoft'
