@@ -1,18 +1,4 @@
 USE INFO330_Proj_4
-SELECT * FROM tblFEATURE
-
--- CREATE TABLE tblBRAND_TYPE (
---     BrandTypeID INT IDENTITY (1, 1) PRIMARY KEY,
---     BrandTypeName varchar(20),
---     BrandTypeDescription varchar(500)
--- )
-
--- CREATE TABLE tblBRAND (
---     BrandID INT IDENTITY (1, 1) PRIMARY KEY,
---     BrandName varchar(20),
---     BrandDescription varchar(500)
--- )
--- GO
 
 -- CREATE TABLE tblFEATURE (
 --     FeatureID INT IDENTITY (1, 1) PRIMARY KEY,
@@ -95,10 +81,3 @@ CREATE TABLE tblSTORAGE (
     REFERENCES tblSTORAGE_SIZE(StorageSizeID)
 )
 GO
-
-ALTER TABLE tblBRAND
-ADD BrandTypeID INT
-
-ALTER TABLE tblBRAND
-ADD CONSTRAINT FK_BrandTypeID
-FOREIGN KEY (BrandTypeID) REFERENCES tblBRAND_TYPE (BrandTypeID)

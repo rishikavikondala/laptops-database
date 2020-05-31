@@ -31,13 +31,14 @@ EXEC uspINSERTOS @FeatureName = 'MacOS', @BrandName = 'Apple', @VersionName = 'C
 EXEC uspINSERTOS @FeatureName = 'Windows', @BrandName = 'Microsoft', @VersionName = '10 Home'
 EXEC uspINSERTOS @FeatureName = 'Windows', @BrandName = 'Microsoft', @VersionName = '10 Pro'
 EXEC uspINSERTOS @FeatureName = 'ChromeOS', @BrandName = 'Google', @VersionName = '81.0.4044.127'
+
 -- Display
 GO
 ALTER PROCEDURE uspINSERTDISPLAY
 @FeatureName varchar(200),
 @BrandName varchar(20),
 @Resolution varchar(25),
-@DisplaySize decimal(3, 1)
+@DisplaySize numeric(3, 1)
 AS
 DECLARE @F_ID INT, @R_ID INT, @D_ID INT
 SELECT @F_ID = (
@@ -47,23 +48,13 @@ SELECT @F_ID = (
     WHERE F.FeatureName = @FeatureName
     AND B.BrandName = @BrandName
 )
-SELECT @R_ID = (
-    SELECT ResolutionID
-    FROM tblRESOLUTION
-    WHERE Resolution = @Resolution
-)
-SELECT @D_ID = (
-    SELECT DisplaySizeID
-    FROM tblDISPLAY_SIZE
-    WHERE DisplaySize = @DisplaySize
-)
 BEGIN TRAN T1
-INSERT INTO tblDISPLAY(FeatureID, ResolutionID, DisplaySizeID)
-VALUES (@F_ID, @R_ID, @D_ID)
+INSERT INTO tblDISPLAY(FeatureID, Resolution, DisplaySize)
+VALUES (@F_ID, @Resolution, @DisplaySize)
 COMMIT TRAN T1
 
 EXEC uspINSERTDISPLAY @FeatureName = 'Retina display', @BrandName = 'Apple', @Resolution = '2500 x 1600', @DisplaySize = 13.3
-EXEC uspINSERTDISPLAY @FeatureName = 'Full HD Display', @BrandName = 'Google', @Resolution = '1920 x 1080', @DisplaySize = 13.3
+EXEC uspINSERTDISPLAY @FeatureName = 'Full High-Definition Display', @BrandName = 'Google', @Resolution = '1920 x 1080', @DisplaySize = 13.3
 EXEC uspINSERTDISPLAY @FeatureName = 'PixelSense display', @BrandName = 'Microsoft', @Resolution = '2736 x 1824', @DisplaySize = 12.3
 EXEC uspINSERTDISPLAY @FeatureName = 'InfinityEdge Anti-Glare Non-Touch', @BrandName = 'Dell', @Resolution = '1920 x 1080', @DisplaySize = 15.6
 EXEC uspINSERTDISPLAY @FeatureName = 'Retina display', @BrandName = 'Apple', @Resolution = '3072 x 1920', @DisplaySize = 16.0
@@ -85,13 +76,14 @@ EXEC uspINSERTDISPLAY @FeatureName = 'FHD', @BrandName = 'Dell', @Resolution = '
 EXEC uspINSERTDISPLAY @FeatureName = 'FHD', @BrandName = 'Dell', @Resolution = '1920 x 1080', @DisplaySize = 17.3
 EXEC uspINSERTDISPLAY @FeatureName = 'FHD Widescreen LED', @BrandName = 'Asus', @Resolution = '1920 x 1080', @DisplaySize = 15.6
 EXEC uspINSERTDISPLAY @FeatureName = 'FHD Wide screen LED', @BrandName = 'Acer', @Resolution = '1920 x 1080', @DisplaySize = 17.3
+
 -- OS
 GO
-CREATE PROCEDURE uspINSERTCPU
+ALTER PROCEDURE uspINSERTCPU
 @FeatureName varchar(200),
 @BrandName varchar(20),
 @NumCores INT,
-@ClockSpeed decimal(3, 1)
+@ClockSpeed numeric(3, 1)
 AS
 DECLARE @F_ID INT, @N_ID INT, @C_ID INT
 SELECT @F_ID = (
@@ -101,22 +93,10 @@ SELECT @F_ID = (
     WHERE F.FeatureName = @FeatureName
     AND B.BrandName = @BrandName
 )
-SELECT @N_ID = (
-    SELECT NumCoresID
-    FROM tblNUM_CORES
-    WHERE NumCores = @NumCores
-)
-SELECT @C_ID = (
-    SELECT ClockSpeedID
-    FROM tblCLOCK_SPEED
-    WHERE ClockSpeed = @ClockSpeed
-)
 BEGIN TRAN T1
-INSERT INTO tblCPU(FeatureID, NumCoresID, ClockSpeedID)
-VALUES (@F_ID, @N_ID, @C_ID)
+INSERT INTO tblCPU(FeatureID, NumCores, ClockSpeed)
+VALUES (@F_ID, @NumCores, @ClockSpeed)
 COMMIT TRAN T1
-
-SELECT  * FROM tblCPU
 
 EXEC uspINSERTCPU @FeatureName = '1.1GHz dual-core Intel Core i3, Turbo Boost up to 3.2GHz, with 4MB L3 cache', @BrandName = 'Intel', @NumCores = 2, @ClockSpeed = 3.2
 EXEC uspINSERTCPU @FeatureName = '8th Gen Intel Core m3', @BrandName = 'Intel', @NumCores = 2, @ClockSpeed = 2.6
@@ -141,7 +121,7 @@ EXEC uspINSERTCPU @FeatureName = 'AMD 2nd Generation Ryzen 7 3700U', @BrandName 
 
 -- Graphics
 GO
-CREATE PROCEDURE uspINSERTGRAPHICS
+ALTER PROCEDURE uspINSERTGRAPHICS
 @FeatureName varchar(200),
 @BrandName varchar(20),
 @ReleaseYear char(4)
@@ -154,14 +134,9 @@ SELECT @F_ID = (
     WHERE F.FeatureName = @FeatureName
     AND B.BrandName = @BrandName
 )
-SELECT @Y_ID = (
-    SELECT ReleaseYearID
-    FROM tblRELEASE_YEAR
-    WHERE ReleaseYear = @ReleaseYear
-)
 BEGIN TRAN T1
-INSERT INTO tblGRAPHICS(FeatureID, ReleaseYearID)
-VALUES (@F_ID, @Y_ID)
+INSERT INTO tblGRAPHICS(FeatureID, ReleaseYear)
+VALUES (@F_ID, @ReleaseYear)
 COMMIT TRAN T1
 
 EXEC uspINSERTGRAPHICS @FeatureName = 'Iris Plus', @BrandName = 'Intel', @ReleaseYear = '2020'
@@ -177,6 +152,7 @@ EXEC uspINSERTGRAPHICS @FeatureName = 'Quadro T2000 with 4GB', @BrandName = 'NVI
 EXEC uspINSERTGRAPHICS @FeatureName = 'Imagination PowerVR GX6250', @BrandName = 'Imagination', @ReleaseYear = '2015'
 
 EXEC uspINSERTGRAPHICS @FeatureName = 'Integrated Radeon RX Vega 10', @BrandName = 'AMD', @ReleaseYear = '2017'
+
 -- Security
 GO
 ALTER PROCEDURE uspINSERTSECURITY
@@ -207,9 +183,10 @@ EXEC uspINSERTSECURITY @FeatureName = 'Default password security', @BrandName = 
 EXEC uspINSERTSECURITY @FeatureName = 'Windows Hello', @BrandName = 'Microsoft', @SecurityType = 'Face sign-in'
 EXEC uspINSERTSECURITY @FeatureName = 'Firmware TPM', @BrandName = 'Microsoft', @SecurityType = 'Face sign-in'
 EXEC uspINSERTSECURITY @FeatureName = 'Thinkshield security capabilities', @BrandName = 'Lenovo', @SecurityType = 'Fingerprint'
+
 -- Webcam
 GO
-CREATE PROCEDURE uspINSERTWEBCAM
+ALTER PROCEDURE uspINSERTWEBCAM
 @FeatureName varchar(200),
 @BrandName varchar(20),
 @ProgressiveScan INT
@@ -222,14 +199,9 @@ SELECT @F_ID = (
     WHERE F.FeatureName = @FeatureName
     AND B.BrandName = @BrandName
 )
-SELECT @P_ID = (
-    SELECT ProgressiveScanID
-    FROM tblPROGRESSIVE_SCAN
-    WHERE ProgressiveScan = @ProgressiveScan
-)
 BEGIN TRAN T1
-INSERT INTO tblWEBCAM(FeatureID, ProgressiveScanID)
-VALUES (@F_ID, @P_ID)
+INSERT INTO tblWEBCAM(FeatureID, ProgressiveScan)
+VALUES (@F_ID, @ProgressiveScan)
 COMMIT TRAN T1
 
 EXEC uspINSERTWEBCAM @FeatureName = 'FaceTime HD camera', @BrandName = 'Apple', @ProgressiveScan = 720
@@ -239,22 +211,23 @@ EXEC uspINSERTWEBCAM @FeatureName = '4-element lens webcam', @BrandName = 'Dell'
 
 EXEC uspINSERTWEBCAM @FeatureName = 'Front-facing camera with full HD', @BrandName = 'Microsoft', @ProgressiveScan = 720
 EXEC uspINSERTWEBCAM @FeatureName = 'FDH Webcam', @BrandName = 'Dell', @ProgressiveScan = 1080
-EXEC uspINSERTWEBCAM @FeatureName = 'HD Webcam', @BrandName = 'Samsung', @ProgressiveScan = 720
+EXEC uspINSERTWEBCAM @FeatureName = 'High-Definition Webcam', @BrandName = 'Samsung', @ProgressiveScan = 720
 EXEC uspINSERTWEBCAM @FeatureName = 'HD webcam', @BrandName = 'Lenovo', @ProgressiveScan = 720
 
 EXEC uspINSERTWEBCAM @FeatureName = 'Aspire 5 webcam', @BrandName = 'Acer', @ProgressiveScan = 720
-EXEC uspINSERTWEBCAM @FeatureName = 'HD Web cam', @BrandName = 'Lenovo', @ProgressiveScan = 720
+EXEC uspINSERTWEBCAM @FeatureName = 'HD Web camera', @BrandName = 'Lenovo', @ProgressiveScan = 720
 EXEC uspINSERTWEBCAM @FeatureName = 'HD web cam', @BrandName = 'MSI', @ProgressiveScan = 720
 EXEC uspINSERTWEBCAM @FeatureName = 'Integrated webcam', @BrandName = 'Alienware', @ProgressiveScan = 720
 
 EXEC uspINSERTWEBCAM @FeatureName = '3D IR HD Camera', @BrandName = 'Asus', @ProgressiveScan = 720
 EXEC uspINSERTWEBCAM @FeatureName = 'G5 15 webcam', @BrandName = 'Dell', @ProgressiveScan = 720
 EXEC uspINSERTWEBCAM @FeatureName = 'G7 17 webcam', @BrandName = 'Dell', @ProgressiveScan = 720
-EXEC uspINSERTWEBCAM @FeatureName = 'HD Web-cam', @BrandName = 'Asus', @ProgressiveScan = 720
+EXEC uspINSERTWEBCAM @FeatureName = 'High definition Web-cam', @BrandName = 'Asus', @ProgressiveScan = 720
 EXEC uspINSERTWEBCAM @FeatureName = 'HD web-cam', @BrandName = 'Acer', @ProgressiveScan = 720
+
 -- Audio
 GO
-ALTER PROCEDURE uspINSERTAUDIO
+CREATE PROCEDURE uspINSERTAUDIO
 @FeatureName varchar(200),
 @BrandName varchar(20),
 @NumSpeakers INT
@@ -267,19 +240,14 @@ SELECT @F_ID = (
     WHERE F.FeatureName = @FeatureName
     AND B.BrandName = @BrandName
 )
-SELECT @S_ID = (
-    SELECT NumSpeakersID
-    FROM tblNUM_SPEAKERS
-    WHERE NumSpeakers = @NumSpeakers
-)
 BEGIN TRAN T1
-INSERT INTO tblAUDIO(FeatureID, NumSpeakersID)
-VALUES (@F_ID, @S_ID)
+INSERT INTO tblAUDIO(FeatureID, NumSpeakers)
+VALUES (@F_ID, @NumSpeakers)
 COMMIT TRAN T1
 
 EXEC uspINSERTAUDIO @FeatureName = 'Stereo speakers with wide stereo sound', @BrandName = 'Apple', @NumSpeakers = 2
 EXEC uspINSERTAUDIO @FeatureName = 'Front-firing speakers for better surround sound', @BrandName = 'Google', @NumSpeakers = 2
-EXEC uspINSERTAUDIO @FeatureName = 'Stereo speakers', @BrandName = 'Dolby', @NumSpeakers = 1
+EXEC uspINSERTAUDIO @FeatureName = 'Dolby Stereo speakers', @BrandName = 'Dolby', @NumSpeakers = 1
 EXEC uspINSERTAUDIO @FeatureName = 'Stereo speakers with Waves MaxxAudio Pro', @BrandName = 'Maxx', @NumSpeakers = 1
 EXEC uspINSERTAUDIO @FeatureName = 'High-fidelity system with force-cancelling woofers and wide stereo sound', @BrandName = 'Apple', @NumSpeakers = 6
 
@@ -297,13 +265,14 @@ EXEC uspINSERTAUDIO @FeatureName = 'Stereo speakers with high dynamic range', @B
 
 EXEC uspINSERTAUDIO @FeatureName = 'SonicMaster Stereo', @BrandName = 'Asus', @NumSpeakers = 1
 EXEC uspINSERTAUDIO @FeatureName = 'Stereo Speakers', @BrandName = 'Dell', @NumSpeakers = 2
-EXEC uspINSERTAUDIO @FeatureName = 'Stereo Speaker', @BrandName = 'Asus', @NumSpeakers = 1
+EXEC uspINSERTAUDIO @FeatureName = 'Vivobook Stereo Speaker', @BrandName = 'Asus', @NumSpeakers = 1
+
 -- Storage
 GO
-CREATE PROCEDURE uspINSERTSTORAGE
+ALTER PROCEDURE uspINSERTSTORAGE
 @FeatureName varchar(200),
 @BrandName varchar(20),
-@Size INT
+@Gigabytes INT
 AS
 DECLARE @F_ID INT, @S_ID INT
 SELECT @F_ID = (
@@ -313,36 +282,31 @@ SELECT @F_ID = (
     WHERE F.FeatureName = @FeatureName
     AND B.BrandName = @BrandName
 )
-SELECT @S_ID = (
-    SELECT StorageSizeID
-    FROM tblSTORAGE_SIZE
-    WHERE Size = @Size
-)
 BEGIN TRAN T1
-INSERT INTO tblSTORAGE(FeatureID, StorageSizeID)
-VALUES (@F_ID, @S_ID)
+INSERT INTO tblSTORAGE(FeatureID, Gigabytes)
+VALUES (@F_ID, @Gigabytes)
 COMMIT TRAN T1
 
-EXEC uspINSERTSTORAGE @FeatureName = 'PCIe-based SSD', @BrandName = 'Apple', @Size = 256
-EXEC uspINSERTSTORAGE @FeatureName = 'Intel Core m3 Storage', @BrandName = 'Intel', @Size = 64
-EXEC uspINSERTSTORAGE @FeatureName = 'Solid-state drive (SSD)', @BrandName = 'Microsoft', @Size = 128
-EXEC uspINSERTSTORAGE @FeatureName = 'M.2 PCIe NVMe SSD', @BrandName = 'Dell', @Size = 256
-EXEC uspINSERTSTORAGE @FeatureName = 'PCIe-based SSD', @BrandName = 'Apple', @Size = 512
+EXEC uspINSERTSTORAGE @FeatureName = 'PCIe-based SSD', @BrandName = 'Apple', @Gigabytes = 256
+EXEC uspINSERTSTORAGE @FeatureName = 'Intel Core m3 Storage', @BrandName = 'Intel', @Gigabytes = 64
+EXEC uspINSERTSTORAGE @FeatureName = 'Solid-state drive (SSD)', @BrandName = 'Microsoft', @Gigabytes = 128
+EXEC uspINSERTSTORAGE @FeatureName = 'M.2 PCIe NVMe SSD', @BrandName = 'Dell', @Gigabytes = 256
+EXEC uspINSERTSTORAGE @FeatureName = 'PCIe-based SSD', @BrandName = 'Apple', @Gigabytes = 512
 
-EXEC uspINSERTSTORAGE @FeatureName = '1TB M.2 NVME SSD', @BrandName = 'Microsoft', @Size = 128
-EXEC uspINSERTSTORAGE @FeatureName = '2x PCIe M.2 SSD', @BrandName = 'Dell', @Size = 512
-EXEC uspINSERTSTORAGE @FeatureName = 'SSD', @BrandName = 'Samsung', @Size = 512
-EXEC uspINSERTSTORAGE @FeatureName = 'PCIe SSD', @BrandName = 'Lenovo', @Size = 256
-EXEC uspINSERTSTORAGE @FeatureName = '2666MHz DDR4', @BrandName = 'Dell', @Size = 64
+EXEC uspINSERTSTORAGE @FeatureName = '1TB M.2 NVME SSD', @BrandName = 'Microsoft', @Gigabytes = 128
+EXEC uspINSERTSTORAGE @FeatureName = '2x PCIe M.2 SSD', @BrandName = 'Dell', @Gigabytes = 512
+EXEC uspINSERTSTORAGE @FeatureName = 'SSD', @BrandName = 'Samsung', @Gigabytes = 512
+EXEC uspINSERTSTORAGE @FeatureName = 'PCIe SSD', @BrandName = 'Lenovo', @Gigabytes = 256
+EXEC uspINSERTSTORAGE @FeatureName = '2666MHz DDR4', @BrandName = 'Dell', @Gigabytes = 64
 
-EXEC uspINSERTSTORAGE @FeatureName = 'SSD storage system', @BrandName = 'Acer', @Size = 512
-EXEC uspINSERTSTORAGE @FeatureName = 'SSD storage', @BrandName = 'Lenovo', @Size = 64
-EXEC uspINSERTSTORAGE @FeatureName = 'SSD + HDD', @BrandName = 'MSI', @Size = 3000
-EXEC uspINSERTSTORAGE @FeatureName = 'PCIe M.2 SSD + SSHD Hybrid Drive', @BrandName = 'Alienware', @Size = 1256
-EXEC uspINSERTSTORAGE @FeatureName = 'PCIe-based SSD', @BrandName = 'Apple', @Size = 4000
+EXEC uspINSERTSTORAGE @FeatureName = 'SSD storage system', @BrandName = 'Acer', @Gigabytes = 512
+EXEC uspINSERTSTORAGE @FeatureName = 'SSD storage', @BrandName = 'Lenovo', @Gigabytes = 64
+EXEC uspINSERTSTORAGE @FeatureName = 'SSD + HDD', @BrandName = 'MSI', @Gigabytes = 3000
+EXEC uspINSERTSTORAGE @FeatureName = 'PCIe M.2 SSD + SSHD Hybrid Drive', @BrandName = 'Alienware', @Gigabytes = 256
+EXEC uspINSERTSTORAGE @FeatureName = 'PCIe-based SSD', @BrandName = 'Apple', @Gigabytes = 4000
 
-EXEC uspINSERTSTORAGE @FeatureName = 'PCIe solid-state-drive', @BrandName = 'Asus', @Size = 256
-EXEC uspINSERTSTORAGE @FeatureName = 'PCIe NVMe SSD + SATA HDD', @BrandName = 'Dell', @Size = 1028
-EXEC uspINSERTSTORAGE @FeatureName = 'PCIe NVMe SSD + SATA HDD', @BrandName = 'Dell', @Size = 512
-EXEC uspINSERTSTORAGE @FeatureName = 'PCIe solid-state-drive', @BrandName = 'Asus', @Size = 512
-EXEC uspINSERTSTORAGE @FeatureName = 'PCIe Solid-State-Drive (SSD)', @BrandName = 'Acer', @Size = 512
+EXEC uspINSERTSTORAGE @FeatureName = 'PCIe solid-state-drive', @BrandName = 'Asus', @Gigabytes = 256
+EXEC uspINSERTSTORAGE @FeatureName = 'PCIe NVMe SSD + SATA HDD', @BrandName = 'Dell', @Gigabytes = 1028
+EXEC uspINSERTSTORAGE @FeatureName = 'PCIe NVMe SSD + SATA HDD', @BrandName = 'Dell', @Gigabytes = 512
+EXEC uspINSERTSTORAGE @FeatureName = 'PCIe solid-state-drive', @BrandName = 'Asus', @Gigabytes = 512
+EXEC uspINSERTSTORAGE @FeatureName = 'PCIe Solid-State-Drive (SSD)', @BrandName = 'Acer', @Gigabytes = 512
