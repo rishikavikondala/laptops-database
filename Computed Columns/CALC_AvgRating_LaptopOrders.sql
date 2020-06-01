@@ -1,7 +1,7 @@
 USE INFO330_Proj_4
-GO
 
 --Average Rating for a product
+GO
 CREATE FUNCTION AvgLaptopRating(@PK INT)
 RETURNS
 NUMERIC(2,1)
@@ -19,12 +19,11 @@ DECLARE @RET NUMERIC(2,1) = (
 RETURN @RET
 END
 GO
-
 ALTER TABLE tblPRODUCT
 ADD AverageRating AS (dbo.AvgLaptopRating(ProductID))
-GO
 
 --Number of Orders previously placed for a product 
+GO
 CREATE FUNCTION NumOfOrdersLaptop(@PK INT)
 RETURNS
 INT
@@ -40,7 +39,5 @@ DECLARE @RET INT = (
 RETURN @RET
 END
 GO
-
 ALTER TABLE tblPRODUCT
 ADD NumberOfOrdersPlaced AS (dbo.NumOfOrdersLaptop(ProductID))
-

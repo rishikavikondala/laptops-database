@@ -73,7 +73,7 @@
 - Number of orders previously placed for a product of type laptop
 
 <ins>Ryan</ins>
-- Sales tax in a customer’s state of residence.
+- Total number of orders for a product of type laptop in the past six months
 - Total number of products of type laptop that have a particular color
 
 ## **Views:**
