@@ -1,5 +1,4 @@
 USE INFO330_Proj_4
-
 /*
 Count products of type laptop by the number of unique brands
 that contributed features to them.
@@ -7,7 +6,7 @@ that contributed features to them.
 4 - 5: 'Some contributors'
 Greater than 5: 'Lots of contributors'
 */
-
+GO
 CREATE VIEW [Brands Contributions to Laptops] AS
 SELECT P.ProductID, COUNT(DISTINCT B.BrandID) AS NumBrands
 FROM tblPRODUCT P
@@ -18,6 +17,7 @@ FROM tblPRODUCT P
 WHERE PT.ProductTypeName = 'Laptop'
 GROUP BY P.ProductID
 
+GO
 SELECT (CASE
     WHEN NumBrands BETWEEN 1 AND 2
     THEN 'Few contributing brands'
@@ -40,6 +40,10 @@ GROUP BY (CASE
     ELSE 'Lots of contributing brands'
 END)
 ORDER BY UniqueBrands DESC
+
+
+
+
 
 -- all laptops purchased in the South at least once
 SELECT P.ProductID
