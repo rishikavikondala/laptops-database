@@ -41,10 +41,6 @@ GROUP BY (CASE
 END)
 ORDER BY UniqueBrands DESC
 
-
-
-
-
 -- all laptops purchased in the South at least once
 SELECT P.ProductID
 FROM tblPRODUCT P
