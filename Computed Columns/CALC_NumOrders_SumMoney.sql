@@ -1,11 +1,9 @@
 USE INFO330_Proj_4
 
 -- Computed Column for total number of orders a customer has placed
-
 GO
 CREATE FUNCTION CalcNumOrdersPerCustomer(@PK INT)
-RETURNS
-INT
+RETURNS INT
 AS
 BEGIN
 DECLARE @RET INT = (
@@ -20,23 +18,23 @@ GO
 ALTER TABLE tblCUSTOMER
 ADD NumOrdersPerCustomer AS (dbo.CalcNumOrdersPerCustomer(CustomerID))
 
+ALTER TABLE tblCUSTOMER
+DROP COLUMN SumMoneySpentOnLaptopsPerCustomer
 
 -- Computed Column for how much money a customer has spent on products of type laptop
-
 GO
 CREATE FUNCTION CalcMoneySpentOnLaptopsPerCustomer(@PK INT)
-RETURNS
-INT
+RETURNS INT
 AS
 BEGIN
-DECLARE @RET INT = (
+DECLARE @RET NUMERIC = (
     SELECT SUM(O.OrderTotal)
     FROM tblORDER O
         JOIN tblPRODUCT_ORDER PO ON  O.OrderID = PO.OrderID
         JOIN tblPRODUCT P ON PO.ProductID = P.ProductID
-        JOIN tblPRODUCT_TYPE PT PN PT.ProductTypeID = P.ProductTypeID
+        JOIN tblPRODUCT_TYPE PT ON PT.ProductTypeID = P.ProductTypeID
         JOIN tblCUSTOMER C ON O.CustomerID = C.CustomerID
-    WHERE P.ProductTypeName = 'Laptop'
+    WHERE PT.ProductTypeName = 'Laptop'
     AND C.CustomerID = @PK
 )
 RETURN @RET
