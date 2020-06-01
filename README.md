@@ -78,17 +78,17 @@
 
 ## **Views:**
 <ins>Rishi</ins>
-- 
-- 
+- V1
+- V2
 
 <ins>Tanner</ins>
-- 
-- 
+- V3
+- V4
 
 <ins>Brian</ins>
-- 
-- 
+- V5
+- V6
 
 <ins>Ryan</ins>
-- 
-- 
+- V7
+- V8
