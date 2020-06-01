@@ -77,11 +77,18 @@
 - Total number of products of type laptop that have a particular color
 
 ## **Views:**
--
--
--
--
--
--
--
--
+<ins>Rishi</ins>
+- 
+- 
+
+<ins>Tanner</ins>
+- 
+- 
+
+<ins>Brian</ins>
+- 
+- 
+
+<ins>Ryan</ins>
+- 
+- 
