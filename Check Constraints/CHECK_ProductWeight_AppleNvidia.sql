@@ -23,10 +23,9 @@ ALTER TABLE tblPRODUCT WITH NOCHECK
 ADD CONSTRAINT CK_WindowsWeight
 CHECK (dbo.fn_WindowsWeight() = 0)
 
--- No product by Apple can have an NVIDIA graphics card
-
+-- No Macbook can have an NVIDIA graphics card
 GO
-CREATE FUNCTION fn_NoNvidiaInApple()
+ALTER FUNCTION fn_NoNvidiaInApple()
 RETURNS INT
 AS
 BEGIN
@@ -36,13 +35,15 @@ BEGIN
         FROM tblPRODUCT_FEATURE PF
             JOIN tblFEATURE F ON PF.FeatureID = F.FeatureID
             JOIN tblPRODUCT P ON PF.ProductID = P.ProductID
+            JOIN tblPRODUCT_TYPE PT ON P.ProductTypeID = PT.ProductTypeID
             JOIN tblBRAND B ON F.BrandID = B.BrandID
-        WHERE P.ProductName LIKE '%Apple%'
+        WHERE P.ProductName LIKE '%Macbook%'
         AND F.BrandID = (
             SELECT B.BrandID
             FROM tblBRAND B
             WHERE B.BrandName = 'NVIDIA'
         )
+        AND PT.ProductTypeName = 'Laptop'
     )
     BEGIN
         SET @RET = 1
@@ -50,6 +51,10 @@ BEGIN
 RETURN @RET
 END
 GO
-ALTER TABLE tblPRODUCT_FEATURE
+ALTER TABLE tblPRODUCT_FEATURE WITH NOCHECK
 ADD CONSTRAINT CK_NoNvidiaInApple
 CHECK(dbo.fn_NoNvidiaInApple() = 0)
+
+EXEC uspINSERTPRODUCTFEATURE
+@FeatureName = 'GeForce GTX 1650 4GB GDDR5', -- NVIDIA graphics card
+@ProductName = 'Apple MacBook Pro 13-inch' -- Macbook product

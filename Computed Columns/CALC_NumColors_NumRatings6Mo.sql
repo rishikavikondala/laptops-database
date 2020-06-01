@@ -1,6 +1,6 @@
 USE INFO330_Proj_4
 
--- Number of products of type laptop for a particular color
+-- Number of products that have a particular color
 GO
 CREATE FUNCTION CalcNumLaptopsPerColor(@PK INT)
 RETURNS INT
@@ -9,7 +9,7 @@ BEGIN
 DECLARE @RET INT = (
     SELECT COUNT(DISTINCT P.ProductID)
     FROM tblPRODUCT P
-        JOIN tblCOLOR C on P.ColorID = C.ColorID
+        JOIN tblCOLOR C ON P.ColorID = C.ColorID
     WHERE C.ColorID = @PK
 )
 RETURN @RET
@@ -18,9 +18,24 @@ GO
 ALTER TABLE tblCOLOR
 ADD NumLaptopsPerColor AS (dbo.CalcNumLaptopsPerColor(ColorID))
 
+SELECT * FROM tblCOLOR
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 -- Number of times a rating value was assigned in the past 6 months
 GO
-ALTER FUNCTION CalcNumRatingsPast6Months(@PK INT)
+CREATE FUNCTION CalcNumRatingsPast6Months(@PK INT)
 RETURNS INT
 AS
 BEGIN

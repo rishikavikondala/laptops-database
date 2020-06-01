@@ -1,5 +1,4 @@
 USE INFO330_Proj_4
-DBCC CHECKIDENT (tblDISPLAY, RESEED, 0)
 
 -- OS
 GO
@@ -27,10 +26,11 @@ INSERT INTO tblOS
 VALUES (@F_ID, @V_ID)
 COMMIT TRAN T1
 
+SELECT * FROM tblOS
 EXEC uspINSERTOS @FeatureName = 'MacOS', @BrandName = 'Apple', @VersionName = 'Catalina'
 EXEC uspINSERTOS @FeatureName = 'Windows', @BrandName = 'Microsoft', @VersionName = '10 Home'
 EXEC uspINSERTOS @FeatureName = 'Windows', @BrandName = 'Microsoft', @VersionName = '10 Pro'
-EXEC uspINSERTOS @FeatureName = 'ChromeOS', @BrandName = 'Google', @VersionName = '81.0.4044.127'
+EXEC uspINSERTOS @FeatureName = 'ChromeOS', @BrandName = 'Google', @VersionName = 'Version 81'
 
 -- Display
 GO
