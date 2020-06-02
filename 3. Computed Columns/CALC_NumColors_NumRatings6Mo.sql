@@ -18,21 +18,6 @@ GO
 ALTER TABLE tblCOLOR
 ADD NumLaptopsPerColor AS (dbo.CalcNumLaptopsPerColor(ColorID))
 
-SELECT * FROM tblCOLOR
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 -- Number of times a rating value was assigned in the past 6 months
 GO
 CREATE FUNCTION CalcNumRatingsPast6Months(@PK INT)

@@ -52,3 +52,6 @@ WHERE O.OrderDate >= DATEADD(MONTH, -6, GETDATE())
 AND PT.ProductTypeName = 'Laptop'
 GROUP BY C.CustomerID
 HAVING SUM(O.OrderTotal) > 1000
+
+GO
+SELECT * FROM [Customers With Over $1000 Last 6 Months For Laptops Over 3 Stars]

@@ -6,14 +6,6 @@
 - Brian Ying
 - Ryan Kim
 
-## **Lookup tables:**
-- tblBRAND_TYPE
-- tblPRODUCT_TYPE
-- tblCOLOR
-- tblRATING
-- tblVERSION
-- tblSECURITY_TYPE
-
 ## **Stored procedures:** <br>
 <ins>Rishi</ins>
 - tblCOMMENT
@@ -51,12 +43,12 @@
 - Two reviews cannot have the exact same comment
 
 <ins>Brian</ins>
-- Less than 2 cores must not be a valid CPU feature
+- Less than 64 GB must not be a valid storage option
 - A laptop order must have a quantity between 1 and 20 inclusive
 
 <ins>Ryan</ins>
 - A customer cannot be under 18 years of age
-- RatingValue must be between 1 and 5 inclusive
+- Rating value must be between 1 and 5 inclusive
 
 ## **Computed columns:**
 
@@ -65,16 +57,16 @@
 - Number of products of type laptop per security type <br>
 
 <ins>Tanner</ins>
-- Total number of orders a customer has placed 
-- Total sum of money a customer has spent on products of type laptop <br>
+- Number of orders a customer has previously placed
+- Sum of money each customer has spent on products of type laptop <br>
 
 <ins>Brian</ins>
 - Average rating value for a product of type laptop
 - Number of orders previously placed for a product of type laptop
 
 <ins>Ryan</ins>
-- Total number of orders for a product of type laptop in the past six months
-- Total number of products of type laptop that have a particular color
+- Number of times a rating value has been assigned in the past six months
+- Number of products of type laptop that have a particular color
 
 ## **Views:**
 <ins>Rishi</ins>
@@ -86,9 +78,17 @@
 - Find the average price of a product of type laptop: with an Intel CPU that has at least 2 cores, battery life greater than or equal to 10 hours, released in the last 2 years, and that purchased only by customers over 30 years old.
 
 <ins>Brian</ins>
-- V5
-- V6
+- View5
+- View6
 
 <ins>Ryan</ins>
 - Find the top 5 products of type laptop meeting the following conditions: not affiliated with Apple, a graphics card made by NVIDIA, received an average rating of 3 or higher, priced under $1000, released before 2020 (ordered output by price highest to lowest)
-- Find and group the products of type laptop that have been ordered at least once by people younger than 50 in the West or South into 3 groups (CASE statement)
+- Find and group the products of type laptop that have been ordered at least once by people younger than 50 in the West or South into 3 groups (CASE statement) <br>
+
+## **Lookup tables:**
+- tblBRAND_TYPE
+- tblPRODUCT_TYPE
+- tblCOLOR
+- tblRATING
+- tblVERSION
+- tblSECURITY_TYPE

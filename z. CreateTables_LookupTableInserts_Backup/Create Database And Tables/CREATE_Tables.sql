@@ -1,0 +1,264 @@
+USE INFO330_Proj_4
+
+GO
+CREATE TABLE tblBRAND_TYPE (
+    BrandTypeID INT IDENTITY (1, 1) PRIMARY KEY,
+    BrandTypeName varchar(20),
+    BrandTypeDescription varchar(500)
+)
+
+GO
+CREATE TABLE tblBRAND (
+    BrandID INT IDENTITY (1, 1) PRIMARY KEY,
+    BrandName varchar(20),
+    BrandDescription varchar(500)
+)
+
+GO
+ALTER TABLE tblBRAND
+ADD BrandTypeID INT
+
+GO
+ALTER TABLE tblBRAND
+ADD CONSTRAINT FK_BrandTypeID
+FOREIGN KEY (BrandTypeID) REFERENCES tblBRAND_TYPE (BrandTypeID)
+
+GO
+CREATE TABLE tblCOLOR (
+    ColorID INT IDENTITY (1, 1) PRIMARY KEY,
+	ColorName varchar(20)
+)
+
+GO
+CREATE TABLE tblPRODUCT_TYPE (
+    ProductTypeID INT IDENTITY (1, 1) PRIMARY KEY,
+    ProductTypeName varchar(20),
+    ProductTypeDescription varchar(500)
+)
+
+GO
+CREATE TABLE tblFEATURE (
+    FeatureID INT IDENTITY (1, 1) PRIMARY KEY,
+    BrandID INT,
+    FeatureName varchar(200),
+    CONSTRAINT FK_BrandID FOREIGN KEY (BrandID)
+    REFERENCES tblBRAND(BrandID)
+)
+
+GO
+CREATE TABLE tblOS (
+    FeatureID INT FOREIGN KEY REFERENCES tblFEATURE (FeatureID) NOT NULL,
+    StylusSupportID INT,
+    VersionID INT
+    CONSTRAINT FK_StylusSupport FOREIGN KEY (StylusSupportID)
+    REFERENCES tblSTYLUS_SUPPORT(StylusSupportID),
+    CONSTRAINT FK_Version FOREIGN KEY (VersionID)
+    REFERENCES tblVERSION(VersionID)
+)
+
+GO
+CREATE TABLE tblDISPLAY (
+    FeatureID INT FOREIGN KEY REFERENCES tblFEATURE (FeatureID) NOT NULL,
+    ResolutionID INT,
+    DisplaySizeID INT
+    CONSTRAINT FK_Resolution FOREIGN KEY (ResolutionID)
+    REFERENCES tblRESOLUTION(ResolutionID),
+    CONSTRAINT FK_DisplaySize FOREIGN KEY (DisplaySizeID)
+    REFERENCES tblDISPLAY_SIZE(DisplaySizeID)
+)
+
+GO
+CREATE TABLE tblCPU (
+    FeatureID INT FOREIGN KEY REFERENCES tblFEATURE (FeatureID) NOT NULL,
+    NumCoresID INT,
+    ClockSpeedID INT,
+    CONSTRAINT FK_NumCores FOREIGN KEY (NumCoresID)
+    REFERENCES tblNUM_CORES(NumCoresID),
+    CONSTRAINT FK_ClockSpeed FOREIGN KEY (ClockSpeedID)
+    REFERENCES tblCLOCK_SPEED(ClockSpeedID)
+)
+
+GO
+CREATE TABLE tblGRAPHICS (
+    FeatureID INT FOREIGN KEY REFERENCES tblFEATURE (FeatureID) NOT NULL,
+    ReleaseYearID INT,
+    CONSTRAINT FK_ReleaseYearGPU FOREIGN KEY (ReleaseYearID)
+    REFERENCES tblRELEASE_YEAR(ReleaseYearID)
+)
+
+GO
+CREATE TABLE tblSECURITY (
+    FeatureID INT FOREIGN KEY REFERENCES tblFEATURE (FeatureID) NOT NULL,
+    SecurityTypeID INT,
+    CONSTRAINT FK_SecurityType FOREIGN KEY (SecurityTypeID)
+    REFERENCES tblSECURITY_TYPE(SecurityTypeID)
+)
+
+GO
+CREATE TABLE tblWEBCAM (
+    FeatureID INT FOREIGN KEY REFERENCES tblFEATURE (FeatureID) NOT NULL,
+    ProgressiveScanID INT,
+    CONSTRAINT FK_ProgressiveScan FOREIGN KEY (ProgressiveScanID)
+    REFERENCES tblPROGRESSIVE_SCAN(ProgressiveScanID)
+)
+
+GO
+CREATE TABLE tblAUDIO (
+    FeatureID INT FOREIGN KEY REFERENCES tblFEATURE (FeatureID) NOT NULL,
+    NumSpeakersID INT,
+    CONSTRAINT FK_NumSpeakers FOREIGN KEY (NumSpeakersID)
+    REFERENCES tblNUM_SPEAKERS(NumSpeakersID)
+)
+
+GO
+CREATE TABLE tblSTORAGE (
+    FeatureID INT FOREIGN KEY REFERENCES tblFEATURE (FeatureID) NOT NULL,
+    StorageSizeID INT,
+    CONSTRAINT FK_StorageSize FOREIGN KEY(StorageSizeID)
+    REFERENCES tblSTORAGE_SIZE(StorageSizeID)
+)
+
+/*
+FEATURE SUBTYPE LOOKUPS--FEATURE SUBTYPE LOOKUPS--FEATURE SUBTYPE LOOKUPS--FEATURE SUBTYPE LOOKUPS
+*/
+
+-- OS
+GO
+CREATE TABLE tblVERSION (
+	VersionID INT IDENTITY (1, 1) PRIMARY KEY,
+	VersionName varchar(20)
+)
+
+-- Security
+GO
+CREATE TABLE tblSECURITY_TYPE (
+	SecurityTypeID INT IDENTITY (1, 1) PRIMARY KEY,
+	SecurityType varchar(30)
+)
+
+GO
+CREATE TABLE tblPRODUCT_FEATURE (
+    ProductFeatureID INT IDENTITY (1, 1) PRIMARY KEY,
+    FeatureID INT,
+    ProductID INT
+)
+
+GO
+ALTER TABLE tblPRODUCT_FEATURE
+ADD CONSTRAINT FK_ProductID
+FOREIGN KEY (ProductID) REFERENCES tblPRODUCT(ProductID)
+
+GO
+ALTER TABLE tblPRODUCT_FEATURE
+ADD CONSTRAINT FK_FeatureID
+FOREIGN KEY (FeatureID) REFERENCES tblFEATURE(FeatureID)
+
+GO
+CREATE TABLE tblPRODUCT (
+    ProductID INT IDENTITY (1, 1) PRIMARY KEY,
+    ProductName varchar(30),
+    ColorID char(4),
+    ProductTypeID INT,
+    ReleaseYear char(4),
+    BatteryLife numeric(3, 1),
+    Weight numeric(3, 1),
+    Price numeric(6, 2)
+)
+
+GO
+CREATE TABLE tblPRODUCT_ORDER (
+    ProductOrderID INT IDENTITY (1, 1) PRIMARY KEY,
+    ProductID INT,
+    OrderID INT,
+    Quantity INT
+)
+
+
+GO
+ALTER TABLE tblPRODUCT_ORDER
+ADD CONSTRAINT FK_ProductID2
+FOREIGN KEY (ProductID) REFERENCES tblPRODUCT(ProductID)
+
+GO
+ALTER TABLE tblPRODUCT_ORDER
+ADD CONSTRAINT FK_OrderID
+FOREIGN KEY (OrderID) REFERENCES tblORDER(OrderID)
+
+GO
+CREATE TABLE tblORDER(
+	OrderID INT IDENTITY(1,1) PRIMARY KEY,
+	CustomerID INT,
+	OrderDate datetime,
+	ShipDate datetime,
+	OrderTotal INT,
+	CONSTRAINT FK_CustomerID FOREIGN KEY(CustomerID)
+	REFERENCES tblCUSTOMER(CustomerID)
+)
+
+GO
+CREATE TABLE tblCUSTOMER(
+	CustomerID INT IDENTITY(1,1) PRIMARY KEY,
+	RegionID INT,
+	FirstName varchar(50),
+	LastName varchar(50),
+	DateOfBirth datetime,
+	Country varchar(25),
+	[State] varchar(50),
+	City varchar(50),
+	Street varchar(50),
+	Zip char(5),
+	Phone char(10),
+	Email varchar(50),
+	CONSTRAINT FK_RegionID FOREIGN KEY(RegionID)
+	REFERENCES tblREGION(RegionID)
+)
+
+GO
+CREATE TABLE tblREGION(
+	RegionID INT IDENTITY(1,1) PRIMARY KEY,
+	RegionName varchar(10),
+	RegionDescription varchar(500)
+)
+
+GO
+CREATE TABLE tblREVIEW (
+  ReviewID INT IDENTITY (1, 1) PRIMARY KEY,
+  RatingID INT,
+  CommentID INT,
+  ProductOrderID INT,
+  CONSTRAINT FK_RatingID FOREIGN KEY (RatingID)
+  REFERENCES tblRATING(RatingID),
+  CONSTRAINT FK_CommentID FOREIGN KEY (CommentID)
+  REFERENCES tblCOMMENT(CommentID),
+)
+
+GO
+ALTER TABLE tblREVIEW
+ADD ProductOrderID INT
+
+GO
+ALTER TABLE tblREVIEW
+ADD CONSTRAINT FK_ProductOrderID FOREIGN KEY (ProductOrderID)
+REFERENCES tblPRODUCT_ORDER(ProductOrderID)
+
+GO 
+CREATE TABLE tblCOMMENT (
+	CommentID INT IDENTITY (1, 1) PRIMARY KEY,
+	CommentBody varchar(500),
+  ReviewID INT
+)
+
+GO
+ALTER TABLE tblCOMMENT
+ADD CONSTRAINT FK_ReviewID FOREIGN KEY (ReviewID)
+REFERENCES tblREVIEW (ReviewID)
+
+GO 
+CREATE TABLE tblRATING (
+	RatingID INT IDENTITY (1, 1) PRIMARY KEY,
+	RatingValue INT
+)
+
+GO
+ALTER TABLE tblRATING
+ADD RatingName varchar(50)

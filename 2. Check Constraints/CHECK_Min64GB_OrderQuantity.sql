@@ -2,15 +2,15 @@ USE INFO330_Proj_4
 
 -- Less than a 2 core CPU should not be a possible feature
 GO
-CREATE FUNCTION fn_Min2CoreCPU()
+CREATE FUNCTION fn_Min64GBStorage()
 RETURNS INT
 AS
 BEGIN
 	DECLARE @RET INT = 0
 	IF EXISTS (
-		SELECT C.FeatureID
-		FROM tblCPU C
-		WHERE C.NumCores < 2
+		SELECT S.FeatureID
+		FROM tblSTORAGE S
+		WHERE S.Gigabytes < 64
 	)
 	BEGIN
 	SET @RET = 1
@@ -18,9 +18,9 @@ BEGIN
 RETURN @RET
 END
 GO
-ALTER TABLE tblCPU WITH NOCHECK
-ADD CONSTRAINT CK_Min2CoreCPU
-CHECK(dbo.fn_Min2CoreCPU() = 0)
+ALTER TABLE tblSTORAGE WITH NOCHECK
+ADD CONSTRAINT CK_Min64GBStorage
+CHECK(dbo.fn_Min64GBStorage() = 0)
 
 --A laptop order must have a quantity between 1 and 20 inclusive
 GO
