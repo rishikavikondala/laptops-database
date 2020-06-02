@@ -38,16 +38,6 @@ GROUP BY (CASE
 END)
 ORDER BY UniqueBrands DESC
 
--- all laptops purchased in the South at least once
-SELECT P.ProductID
-FROM tblPRODUCT P
-    JOIN tblPRODUCT_TYPE PT ON P.ProductTypeID = PT.ProductTypeID
-    JOIN tblPRODUCT_ORDER PO ON P.ProductID = PO.ProductID
-    JOIN tblORDER O ON PO.OrderID = O.OrderID
-    JOIN tblCUSTOMER C ON O.CustomerID = C.CustomerID
-WHERE PT.ProductTypeName = 'Laptop'
-AND C.State = 'South'
-
 /*
 Rank the top 3 most expensive products of type laptop
 with an average rating greater than 3.0
