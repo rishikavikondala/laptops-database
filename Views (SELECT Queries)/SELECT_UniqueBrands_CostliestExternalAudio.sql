@@ -8,17 +8,7 @@ Greater than 5: 'Lots of contributors'
 */
 GO
 CREATE VIEW [Brands Contributions to Laptops] AS
-SELECT P.ProductID, COUNT(DISTINCT B.BrandID) AS NumBrands
-FROM tblPRODUCT P
-    JOIN tblPRODUCT_TYPE PT ON P.ProductTypeID = PT.ProductTypeID
-    JOIN tblPRODUCT_FEATURE PF ON P.ProductID = PF.ProductID
-    JOIN tblFEATURE F ON PF.FeatureID = F.FeatureID
-    JOIN tblBRAND B ON F.BrandID = B.BrandID
-WHERE PT.ProductTypeName = 'Laptop'
-GROUP BY P.ProductID
-
-GO
-SELECT (CASE
+SELECT TOP 4 (CASE
     WHEN NumBrands BETWEEN 1 AND 2
     THEN 'Few contributing brands'
     WHEN NumBrands BETWEEN 3 AND 4
@@ -28,7 +18,14 @@ SELECT (CASE
     ELSE 'Lots of contributing brands'
 END) NumBrandsLabel, COUNT(*) AS UniqueBrands
 FROM (
-    SELECT * FROM [Brands Contributions to Laptops]
+    SELECT P.ProductID, COUNT(DISTINCT B.BrandID) AS NumBrands
+    FROM tblPRODUCT P
+        JOIN tblPRODUCT_TYPE PT ON P.ProductTypeID = PT.ProductTypeID
+        JOIN tblPRODUCT_FEATURE PF ON P.ProductID = PF.ProductID
+        JOIN tblFEATURE F ON PF.FeatureID = F.FeatureID
+        JOIN tblBRAND B ON F.BrandID = B.BrandID
+    WHERE PT.ProductTypeName = 'Laptop'
+    GROUP BY P.ProductID
 ) AS subquery1
 GROUP BY (CASE
     WHEN NumBrands BETWEEN 1 AND 2
