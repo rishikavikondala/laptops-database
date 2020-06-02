@@ -27,7 +27,7 @@ ORDER BY P.Price ASC
 /*
 Find the customers who have:
 - ordered over $1000 of laptop(s) in the last six months
-- that also have an average rating over 3 stars.
+- that also have never been rated below 3 stars
 */
 GO
 CREATE VIEW [Customers With Over $1000 Last 6 Months For Laptops Over 3 Stars] AS

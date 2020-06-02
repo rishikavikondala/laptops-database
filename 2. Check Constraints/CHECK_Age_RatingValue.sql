@@ -1,6 +1,6 @@
 USE INFO330_Proj_4
 
--- A customer must be at least 18 years of age.
+-- A customer cannot be under 18 years of age.
 GO
 CREATE FUNCTION fn_MinCustAge18ToOrder() 
 RETURNS INT
@@ -19,7 +19,7 @@ ALTER TABLE tblCUSTOMER
 ADD CONSTRAINT CK_MinCustAge18ToOrder
 CHECK (dbo.fn_MinCustAge18ToOrder() = 0)
 
--- A rating must be the range 1-5 inclusive
+-- A rating must be the range 1 - 5 inclusive
 GO
 ALTER FUNCTION fn_RatingOnly1to5()
 RETURNS INT

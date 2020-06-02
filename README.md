@@ -70,20 +70,20 @@
 
 ## **Views:**
 <ins>Rishi</ins>
-- Count products of type laptop by the number of unique brands that contributed features to them (CASE statement)
-- Rank the top 3 most expensive products of type laptop with an average rating greater than 3.0 that rely on external audio part producing brands for their audio systems 
+- Count products of type laptop by the number of unique brands that contributed features to them (CASE statement).
+- Rank the top 3 most expensive products of type laptop with an average rating greater than 3.0 that rely on external audio part producing brands for their audio systems.
 
 <ins>Tanner</ins>
 - Find the top 3 lightest products of type laptop in order, which: run on non-Windows OS, have a display resolution of 2880 x 1800, consists of any color except black, and must have been ordered at least once in the last year.
 - Find the average price of a product of type laptop: with an Intel CPU that has at least 2 cores, battery life greater than or equal to 10 hours, released in the last 2 years, and that purchased only by customers over 30 years old.
 
 <ins>Brian</ins>
-- View5
-- View6
+- Find the three lowest priced 2019-released laptops that: run on Windows 10 Home, has at least 1 speaker, and weighs more than 3 lbs.
+- Find the customers who have: ordered over $1000 of laptops (that also have never been rated below 3 stars) in the last six months.
 
 <ins>Ryan</ins>
-- Find the top 5 products of type laptop meeting the following conditions: not affiliated with Apple, a graphics card made by NVIDIA, received an average rating of 3 or higher, priced under $1000, released before 2020 (ordered output by price highest to lowest)
-- Find and group the products of type laptop that have been ordered at least once by people younger than 50 in the West or South into 3 groups (CASE statement) <br>
+- Find the top 5 products of type laptop meeting the following conditions: not affiliated with Apple, a graphics card made by NVIDIA, received an average rating of 3 or higher, priced under $1000, released before 2020 (ordered output by price highest to lowest).
+- Find and group the products of type laptop (which have been ordered at least once by people younger than 50 in the West or South) into 3 groups (CASE statement). <br>
 
 ## **Lookup tables:**
 - tblBRAND_TYPE

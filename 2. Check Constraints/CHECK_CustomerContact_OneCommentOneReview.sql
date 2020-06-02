@@ -23,7 +23,6 @@ ALTER TABLE tblCUSTOMER WITH NOCHECK
 ADD CONSTRAINT CK_ValidContactInfo
 CHECK (dbo.fn_ValidContactInfo() = 0)
 
-
 -- Two reviews cannot have the exact same comment
 GO
 CREATE FUNCTION fn_CommentAppliesToOneReview()
