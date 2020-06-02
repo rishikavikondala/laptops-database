@@ -78,7 +78,7 @@
 
 ## **Views:**
 <ins>Rishi</ins>
-- V1
+- 
 - V2
 
 <ins>Tanner</ins>

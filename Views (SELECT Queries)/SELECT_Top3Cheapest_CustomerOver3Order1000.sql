@@ -24,7 +24,8 @@ AND A.NumSpeakers >= 1
 AND P.Weight > 3
 ORDER BY P.Price ASC
 
-/*Find the customers who have:
+/*
+Find the customers who have:
 - ordered over $1000 of laptop(s) in the last six months
 - that also have an average rating over 3 stars.
 */
