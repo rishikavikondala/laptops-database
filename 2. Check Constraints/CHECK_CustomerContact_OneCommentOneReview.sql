@@ -2,7 +2,6 @@ USE INFO330_Proj_4
 
 /* No customer can have a phone number with letters
 or an email containing less or more than one '@' symbol */
-
 GO
 CREATE FUNCTION fn_ValidContactInfo()
 RETURNS INT
@@ -42,6 +41,6 @@ BEGIN
 RETURN @RET
 END
 GO
-ALTER TABLE tblCOMMENT
+ALTER TABLE tblCOMMENT WITH NOCHECK
 ADD CONSTRAINT CK_CommentAppliesToOneReview
 CHECK (dbo.fn_CommentAppliesToOneReview() = 0)

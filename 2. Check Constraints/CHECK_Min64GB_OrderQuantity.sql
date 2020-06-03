@@ -1,6 +1,6 @@
 USE INFO330_Proj_4
 
--- Less than a 2 core CPU should not be a possible feature
+-- Less than 64GB storage should not be a possible feature
 GO
 CREATE FUNCTION fn_Min64GBStorage()
 RETURNS INT
@@ -22,9 +22,9 @@ ALTER TABLE tblSTORAGE WITH NOCHECK
 ADD CONSTRAINT CK_Min64GBStorage
 CHECK(dbo.fn_Min64GBStorage() = 0)
 
---A laptop order must have a quantity between 1 and 20 inclusive
+--A product order must have a quantity between 1 and 20 inclusive
 GO
-CREATE FUNCTION fn_LaptopOrderBetween1And20()
+CREATE FUNCTION fn_ProductOrderBetween1And20()
 RETURNS INT
 AS
 BEGIN
@@ -33,7 +33,7 @@ BEGIN
 		SELECT PO.ProductOrderID
 		FROM tblPRODUCT_ORDER PO
 		WHERE PO.Quantity < 1
-		OR Quantity > 20
+		OR PO.Quantity > 20
 	)
 	BEGIN
 	SET @RET = 1
@@ -41,6 +41,6 @@ BEGIN
 RETURN @RET
 END
 GO
-ALTER TABLE tblPRODUCT_ORDER
+ALTER TABLE tblPRODUCT_ORDER WITH NOCHECK
 ADD CONSTRAINT CK_QuantityBetween1And20
-CHECK(dbo.fn_LaptopOrderBetween1And20() = 0)
+CHECK(dbo.fn_ProductOrderBetween1And20() = 0)

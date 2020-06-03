@@ -18,9 +18,6 @@ GO
 ALTER TABLE tblCUSTOMER
 ADD NumOrdersPerCustomer AS (dbo.CalcNumOrdersPerCustomer(CustomerID))
 
-ALTER TABLE tblCUSTOMER
-DROP COLUMN SumMoneySpentOnLaptopsPerCustomer
-
 -- Computed Column for how much money a customer has spent on products of type laptop
 GO
 CREATE FUNCTION CalcMoneySpentOnLaptopsPerCustomer(@PK INT)
