@@ -31,7 +31,7 @@ Find the customers who have:
 */
 GO
 CREATE VIEW [Customers With Over $1000 Last 6 Months For Laptops Never Under 3 Stars] AS
-SELECT C.CustomerID, SUM(O.OrderTotal) AS AmountSpent
+SELECT C.CustomerID, C.FirstName, C.LastName, SUM(O.OrderTotal) AS AmountSpent
 FROM tblCUSTOMER C
 	JOIN tblORDER O ON C.CustomerID = O.CustomerID
 	JOIN tblPRODUCT_ORDER PO ON O.OrderID = PO.OrderID
@@ -55,5 +55,5 @@ FROM tblCUSTOMER C
 	) AS subq1 ON P.ProductID = subq1.ProductID
 WHERE O.OrderDate >= DATEADD(MONTH, -6, GETDATE())
 AND PT.ProductTypeName = 'Laptop'
-GROUP BY C.CustomerID
+GROUP BY C.CustomerID, C.FirstName, C.LastName
 HAVING SUM(O.OrderTotal) > 1000
