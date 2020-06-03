@@ -30,7 +30,7 @@ Find the customers who have:
 - that also have never been rated below 3 stars
 */
 GO
-CREATE VIEW [Customers With Over $1000 Last 6 Months For Laptops Over 3 Stars] AS
+CREATE VIEW [Customers With Over $1000 Last 6 Months For Laptops Never Under 3 Stars] AS
 SELECT C.CustomerID, SUM(O.OrderTotal) AS AmountSpent
 FROM tblCUSTOMER C
 	JOIN tblORDER O ON C.CustomerID = O.CustomerID
@@ -38,20 +38,22 @@ FROM tblCUSTOMER C
 	JOIN tblPRODUCT P ON PO.ProductID = P.ProductID
 	JOIN tblPRODUCT_TYPE PT ON P.ProductTypeID = PT.ProductTypeID
 	JOIN (
-		SELECT P.ProductID, AVG(R.RatingValue) AS AverageRating
+		SELECT P.ProductID
 		FROM tblRATING R
 			JOIN tblREVIEW RE ON R.RatingID = RE.RatingID
 			JOIN tblPRODUCT_ORDER PO ON RE.ProductOrderID = PO.ProductOrderID
 			JOIN tblPRODUCT P ON PO.ProductID = P.ProductID
 			JOIN tblPRODUCT_TYPE PT ON P.ProductTypeID = PT.ProductTypeID
 		WHERE PT.ProductTypeName = 'Laptop'
-		GROUP BY P.ProductID
-		HAVING AVG(R.RatingValue) > 3
+		AND P.ProductID NOT IN (
+			SELECT P.ProductID
+			FROM tblPRODUCT P
+				JOIN tblPRODUCT_ORDER PO ON P.ProductID = PO.ProductID
+				JOIN tblREVIEW R ON PO.ProductOrderID = R.ProductOrderID
+				JOIN tblRATING RA ON R.RatingID = RA.RatingID
+			WHERE RA.RatingValue < 3)
 	) AS subq1 ON P.ProductID = subq1.ProductID
 WHERE O.OrderDate >= DATEADD(MONTH, -6, GETDATE())
 AND PT.ProductTypeName = 'Laptop'
 GROUP BY C.CustomerID
 HAVING SUM(O.OrderTotal) > 1000
-
-GO
-SELECT * FROM [Customers With Over $1000 Last 6 Months For Laptops Over 3 Stars]
