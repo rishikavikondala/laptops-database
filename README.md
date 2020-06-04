@@ -1,10 +1,13 @@
 # Laptops Database
 
 ## **Collaborators:**
-- Rishi Kavikondala
-- Tanner Kooistra
-- Brian Ying
-- Ryan Kim
+Rishi Kavikondala, Tanner Kooistra, Brian Ying, Ryan Kim
+
+## Entity Relationship Diagram
+![Final ERD](https://github.com/rishikavikondala/laptops-database/blob/master/z.%20CreateTables_LookupTableInserts_Backup/Laptops%20Database%20ERDs%20-%20Revised.png)
+
+## **Collaborators:**
+
 
 ## **Stored procedures:** <br>
 
