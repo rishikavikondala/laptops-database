@@ -254,7 +254,7 @@ EXEC uspINSERTDISPLAY @FeatureName = 'FHD', @BrandName = 'Dell', @Resolution = '
 EXEC uspINSERTDISPLAY @FeatureName = 'FHD Widescreen LED', @BrandName = 'Asus', @Resolution = '1920 x 1080', @DisplaySize = 15.6
 EXEC uspINSERTDISPLAY @FeatureName = 'FHD Wide screen LED', @BrandName = 'Acer', @Resolution = '1920 x 1080', @DisplaySize = 17.3
 
--- OS
+-- CPU
 GO
 ALTER PROCEDURE uspINSERTCPU
 @FeatureName varchar(200),
