@@ -11,8 +11,8 @@ CREATE PROCEDURE uspINSERTCUSTOMER
 @ResState varchar(50),
 @City varchar(50),
 @Street varchar(50),
-@Zip varchar(5),
-@Phone varchar(10),
+@Zip char(5),
+@Phone char(10),
 @Email varchar(50)
 AS
 DECLARE @REG_ID INT

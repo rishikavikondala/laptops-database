@@ -37,3 +37,4 @@ GO
 ALTER TABLE tblRATING WITH NOCHECK
 ADD CONSTRAINT CK_RatingOnly1to5
 CHECK (dbo.fn_RatingOnly1to5() = 0)
+
