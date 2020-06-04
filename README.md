@@ -7,7 +7,9 @@
 - Ryan Kim
 
 ## **Stored procedures:** <br>
+
 <ins>Rishi</ins>
+
 - tblCOMMENT
 - tblFEATURE
 - tblBRAND
