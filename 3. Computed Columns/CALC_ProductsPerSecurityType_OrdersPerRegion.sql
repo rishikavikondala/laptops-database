@@ -42,5 +42,3 @@ END
 GO
 ALTER TABLE tblREGION
 ADD NumOrdersPerRegion AS (dbo.CalcNumOrdersPerRegion(RegionID))
-
-SELECT * FROM tblBRAND_TYPE

@@ -43,7 +43,7 @@ Rank the top 3 most expensive products of type laptop
 with an average rating greater than 3.0
 that rely on external audio part producing brands for their audio systems 
 */
-
+GO
 CREATE VIEW [Costliest Laptops With External Audio Parts And High Ratings] AS
 SELECT TOP 3 P.ProductName, P.Price, P.AverageRating
 FROM tblPRODUCT_FEATURE PF

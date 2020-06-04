@@ -1,7 +1,6 @@
 USE INFO330_Proj_4
-DBCC CHECKIDENT (tblPRODUCT, RESEED, 0)
-DELETE FROM tblPRODUCT
 
+-- stored procedure for tblPRODUCT
 GO
 CREATE PROCEDURE uspINSERTPRODUCT
     @ProductName varchar(50),
@@ -209,9 +208,7 @@ EXEC uspINSERTPRODUCT
 @Weight = 5.7,
 @Price = 879.99
 
---DBCC CHECKIDENT (tblPRODUCT_FEATURE, RESEED, 0)
---Product_Feature
-
+-- stored procedure for tblPRODUCT_FEATURE
 GO
 CREATE PROCEDURE uspINSERTPRODUCTFEATURE
     @FeatureName varchar(200),

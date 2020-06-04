@@ -27,19 +27,6 @@ VALUES (@FName, @LName, @DOB, @REG_ID, @Country, @ResState, @City, @Street, @Zip
 COMMIT TRAN T1
 
 EXEC uspINSERTCUSTOMER
-@FName = '',
-@LName = '',
-@DOB = '',
-@RegionName = '',
-@Country = 'United States',
-@ResState = '',
-@City = '',
-@Street = '',
-@Zip = '',
-@Phone = '', 
-@Email = ''
-
-EXEC uspINSERTCUSTOMER
 @FName = 'Can',
 @LName = 'Carey',
 @DOB = '1984-5-16',

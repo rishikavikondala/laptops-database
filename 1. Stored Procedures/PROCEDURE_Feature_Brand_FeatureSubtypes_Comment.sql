@@ -1,6 +1,6 @@
 USE INFO330_Proj_4
 
--- tblBRAND
+-- stored procedure for tblBRAND
 GO
 CREATE PROCEDURE uspINSERTBRAND
 @BrandName varchar(20),
@@ -40,6 +40,7 @@ EXEC uspINSERTBRAND @BrandName = 'Maxx', @BrandDescription = 'Maker of device au
 GO
 USE INFO330_Proj_4
 EXEC uspINSERTBRAND @BrandName = 'NoBrand', @BrandDescription = 'For features that are not associated with a brand', @BrandTypeName = NULL
+
 -- tblFEATURE
 GO
 ALTER PROCEDURE uspINSERTFEATURE

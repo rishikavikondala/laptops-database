@@ -1,2 +1,2 @@
 BACKUP DATABASE INFO330_Proj_4
-TO DISK = '/Users/rishikavikondala/'
+TO DISK = 'C:\SQL\Proj_4.BAK'
