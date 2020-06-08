@@ -188,8 +188,8 @@ GO
 CREATE TABLE tblORDER(
 	OrderID INT IDENTITY(1,1) PRIMARY KEY,
 	CustomerID INT,
-	OrderDate datetime,
-	ShipDate datetime,
+	OrderDate date,
+	ShipDate date,
 	OrderTotal INT,
 	CONSTRAINT FK_CustomerID FOREIGN KEY(CustomerID)
 	REFERENCES tblCUSTOMER(CustomerID)
@@ -201,7 +201,7 @@ CREATE TABLE tblCUSTOMER(
 	RegionID INT,
 	FirstName varchar(50),
 	LastName varchar(50),
-	DateOfBirth datetime,
+	DateOfBirth date,
 	Country varchar(25),
 	[State] varchar(50),
 	City varchar(50),
